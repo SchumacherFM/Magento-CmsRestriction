@@ -1,0 +1,2 @@
+Magento CMS Page Restriction
+============================
