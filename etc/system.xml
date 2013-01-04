@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<config>
+    <sections>
+        <schumacherfm_cmsrestriction translate="label" module="schumacherfm_cmsrestriction">
+            <label>CMS Restrictions</label>
+            <tab>schumacherfm</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <url_access_denied translate="label">
+                            <label>URL Page Access denied</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Redirects to this URL if a customer has not the permission to view this page.</comment>
+                        </url_access_denied>
+
+
+
+                    </fields>
+                </settings>
+            </groups>
+        </schumacherfm_cmsrestriction>
+    </sections>
+</config>
