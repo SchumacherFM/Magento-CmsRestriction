@@ -81,11 +81,11 @@
     </adminhtml>
 
     <default>
-        <schumacherfm_cmsrestriction>
-            <settings>
+        <cms>
+            <schumacherfm_cmsrestriction>
                 <url_access_denied>accessdenied</url_access_denied>
-            </settings>
-        </schumacherfm_cmsrestriction>
+            </schumacherfm_cmsrestriction>
+        </cms>
     </default>
 
 </config>

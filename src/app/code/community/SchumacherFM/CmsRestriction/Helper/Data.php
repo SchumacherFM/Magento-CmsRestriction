@@ -8,7 +8,7 @@
  */
 class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    const XML_PATH_ACCESS_DENIED = 'schumacherfm_cmsrestriction/settings/url_access_denied';
+    const XML_PATH_ACCESS_DENIED = 'cms/schumacherfm_cmsrestriction/url_access_denied';
 
     /**
      * the uber method
@@ -30,7 +30,7 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
     public function isRenderingAllowed(Mage_Cms_Model_Page $page)
     {
         if (!$page->getIsActive()) {
-            return false;
+            return FALSE;
         }
 
         $customerAllowed = $this->isCustomerAllowed($page);
@@ -73,20 +73,26 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig(self::XML_PATH_ACCESS_DENIED);
     }
 
+    /**
+     * @param integer $storeId
+     *
+     * @return string
+     */
     public function getStoreName($storeId)
     {
+        $storeId = (int)$storeId;
         /** @var $storeModel Mage_Core_Model_Store */
         $storeModel = Mage::getModel('core/store');
         $storeModel->load($storeId);
 
         $name        = '';
         $websiteName = '';
-        if ($storeId == 0) {
+        if ($storeId === 0) {
             $name        = 'all store views';
             $websiteName = 'all websites';
         }
 
-        if (($storeModel->getId() == $storeId) && $storeId) {
+        if (( (int)$storeModel->getId() === $storeId) && $storeId) {
             $name        = $storeModel->getName();
             $websiteName = $storeModel->getWebsite()->getName();
         }
@@ -107,9 +113,6 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * @author @SchumacherFM
-     *         Expo = exponential sum
-     *
      * @param array  $intArray like array(1,2,3,5,4,8,9,...)
      * @param string $useColumn
      *
@@ -120,7 +123,7 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         $sum = 0;
         if (count($intArray) > 0) {
             foreach ($intArray as $intCol) {
-                $int = ($useColumn == '') ? $intCol : $intCol[$useColumn];
+                $int = ($useColumn === '') ? $intCol : $intCol[$useColumn];
                 $sum += pow(2, intval($int));
             }
         }
@@ -128,8 +131,6 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * @author @SchumacherFM
-     *
      * @param int $expoSum
      * @param int $maxValue
      *
@@ -140,13 +141,12 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         $a       = array();
         $expoSum = intval($expoSum);
         for ($i = 0; $i < $maxValue; $i++) {
-            if (($expoSum & pow(2, $i)) > 0) { /* this is a bit operation */
+            if (($expoSum & pow(2, $i)) > 0) {
                 $a[$i] = $i;
             }
         }
-        return count($a) == 0 ? array(
-
-            0
-        ) : $a;
+        return count($a) === 0
+            ? array(0)
+            : $a;
     }
 }
