@@ -6,6 +6,7 @@
             <action method="addTabAfter">
                 <name>schumacherfm_cmsrestriction_cmsrestriction</name>
                 <block>schumacherfm_cmsrestriction_page_edit_tab_content</block>
+                <after>cms_page_edit_tab_meta</after>
             </action>
         </reference>
     </adminhtml_cms_page_edit>
