@@ -1,3 +1,4 @@
 src/app/code/community/SchumacherFM/CmsRestriction app/code/community/SchumacherFM/CmsRestriction
+src/app/design/adminhtml/default/default/layout/schumacherfm_cmsrestriction.xml app/design/adminhtml/default/default/layout/schumacherfm_cmsrestriction.xml
 src/app/etc/modules/* app/etc/modules/
 
