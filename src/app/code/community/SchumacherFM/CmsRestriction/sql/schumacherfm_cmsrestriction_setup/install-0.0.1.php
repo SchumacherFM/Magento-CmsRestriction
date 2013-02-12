@@ -1,4 +1,11 @@
 <?php
+/**
+ * @category    SchumacherFM_CmsRestriction
+ * @package     Setup
+ * @author      Cyrill at Schumacher dot fm (@SchumacherFM)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @bugs        https://github.com/SchumacherFM/Magento-CmsRestriction/issues
+ */
 
 $installer = $this;
 $installer->startSetup();

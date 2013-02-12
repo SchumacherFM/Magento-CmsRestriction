@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @category    SchumacherFM_CmsRestriction
+ * @package     Helper
+ * @author      Cyrill at Schumacher dot fm
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @bugs        https://github.com/SchumacherFM/Magento-CmsRestriction/issues
+ */
 class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const XML_PATH_ACCESS_DENIED = 'schumacherfm_cmsrestriction/settings/url_access_denied';

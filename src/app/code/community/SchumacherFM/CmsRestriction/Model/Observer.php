@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @category    SchumacherFM_CmsRestriction
+ * @package     Model
+ * @author      Cyrill at Schumacher dot fm (@SchumacherFM)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @bugs        https://github.com/SchumacherFM/Magento-CmsRestriction/issues
+ */
 class SchumacherFM_CmsRestriction_Model_Observer
 {
     const SESSION_AFTER_LOGIN_URL = 'SchumacherFMCmsRestrictionAfterLoginUrl';

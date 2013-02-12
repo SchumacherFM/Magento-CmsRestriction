@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @category    SchumacherFM_CmsRestriction
+ * @package     Block
+ * @author      Cyrill at Schumacher dot fm (@SchumacherFM)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @bugs        https://github.com/SchumacherFM/Magento-CmsRestriction/issues
+ */
 class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestriction extends Mage_Adminhtml_Block_Widget_Form implements
     Mage_Adminhtml_Block_Widget_Tab_Interface
 {
