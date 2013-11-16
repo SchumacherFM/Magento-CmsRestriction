@@ -11,23 +11,6 @@ class SchumacherFM_CmsRestriction_Model_Observer
     const SESSION_AFTER_LOGIN_URL = 'SchumacherFMCmsRestrictionAfterLoginUrl';
 
     /**
-     * @param Varien_Event_Observer $observer
-     */
-    public function updateCmsRestriction(Varien_Event_Observer $observer)
-    {
-
-        /** @var $page Mage_Cms_Model_Page */
-        $page = $observer->getEvent()->getPage();
-
-        $allowedCustomerGroups = (array)$page->getAllowCustomerGroups();
-        $allowedCustomerIds    = preg_replace('~[^0-9,]+~', '', $page->getAllowCustomerIds());
-
-        $page->setAllowCustomerGroups(Mage::helper('schumacherfm_cmsrestriction')->getExpoSum($allowedCustomerGroups));
-        $page->setAllowCustomerIds($allowedCustomerIds);
-
-    }
-
-    /**
      * @var Mage_Core_Controller_Response_Http
      */
     protected $_response;
@@ -49,6 +32,27 @@ class SchumacherFM_CmsRestriction_Model_Observer
     protected $_pageIdentifier;
 
     /**
+     * @var Mage_Cms_Model_Page
+     */
+    protected $_pageModel;
+
+    /**
+     * @param Varien_Event_Observer $observer
+     */
+    public function updateCmsRestriction(Varien_Event_Observer $observer)
+    {
+
+        /** @var $page Mage_Cms_Model_Page */
+        $page = $observer->getEvent()->getPage();
+
+        $allowedCustomerGroups = (array)$page->getAllowCustomerGroups();
+        $allowedCustomerIds    = preg_replace('~[^0-9,]+~', '', $page->getAllowCustomerIds());
+
+        $page->setAllowCustomerGroups(Mage::helper('schumacherfm_cmsrestriction')->getExpoSum($allowedCustomerGroups));
+        $page->setAllowCustomerIds($allowedCustomerIds);
+    }
+
+    /**
      * @param Varien_Event_Observer $observer
      */
     protected function _initProperties(Varien_Event_Observer $observer)
@@ -57,7 +61,6 @@ class SchumacherFM_CmsRestriction_Model_Observer
         $this->_request        = $this->_controller->getRequest();
         $this->_response       = $this->_controller->getResponse();
         $this->_pageIdentifier = $this->_request->getAlias('rewrite_request_path');
-
     }
 
     /**
@@ -86,7 +89,6 @@ class SchumacherFM_CmsRestriction_Model_Observer
             $this->_unsSessionRedirectUrl();
 
             $this->_handleRedirect($url);
-
         }
     }
 
@@ -99,31 +101,40 @@ class SchumacherFM_CmsRestriction_Model_Observer
 
         if ($this->_getPageModelInstance() && !Mage::app()->getStore()->isAdmin()) {
 
-            $isLoggedIn   = Mage::helper('customer')->isLoggedIn();
+            $isLoggedIn       = Mage::helper('customer')->isLoggedIn();
             $isPageRestricted = Mage::helper('schumacherfm_cmsrestriction')->isPageRestricted($this->_getPageModelInstance());
 
             $isCustomerAllowed = Mage::helper('schumacherfm_cmsrestriction')->isCustomerAllowed($this->_getPageModelInstance());
 
             if (!$isLoggedIn && $isPageRestricted) {
 
-                $this->_handleRedirect(Mage_Customer_Helper_Data::ROUTE_ACCOUNT_LOGIN);
+                $this->_handleRedirect($this->_getRouteAccountLogin());
                 $this->_setSessionRedirectUrl($this->_pageIdentifier);
-
             } elseif ($isLoggedIn && $isPageRestricted && !$isCustomerAllowed) {
 
                 /* a logged in user has no permission to view this page */
                 $this->_handleRedirect(Mage::helper('schumacherfm_cmsrestriction')->getAccessDeniedUrl());
-
             }
-
         }
-
     }
 
     /**
-     * @var Mage_Cms_Model_Page
+     * compatibility for magento <= 1.6
+     *
+     * @return mixed
      */
-    protected $_pageModel;
+    protected function _getRouteAccountLogin()
+    {
+        $return   = NULL;
+        $constant = 'Mage_Customer_Helper_Data::ROUTE_ACCOUNT_LOGIN';
+        if (TRUE === defined($constant)) {
+            $return = constant($constant);
+        }
+        if (empty($return)) {
+            $return = 'customer/account/login';
+        }
+        return $return;
+    }
 
     /**
      * @return Mage_Cms_Model_Page
@@ -151,9 +162,11 @@ class SchumacherFM_CmsRestriction_Model_Observer
 
         $this->_response->setRedirect($redirectUrl);
         $this->_controller->setFlag('', Mage_Core_Controller_Varien_Action::FLAG_NO_DISPATCH, TRUE);
-
     }
 
+    /**
+     * @param $url
+     */
     protected function _setSessionRedirectUrl($url)
     {
         Mage::getSingleton('core/session')->{'set' . self::SESSION_AFTER_LOGIN_URL}($url);
@@ -175,9 +188,11 @@ class SchumacherFM_CmsRestriction_Model_Observer
         return (boolean)Mage::getSingleton('core/session')->{'has' . self::SESSION_AFTER_LOGIN_URL}();
     }
 
+    /**
+     * @return bool
+     */
     protected function _unsSessionRedirectUrl()
     {
         return (boolean)Mage::getSingleton('core/session')->{'uns' . self::SESSION_AFTER_LOGIN_URL}();
     }
-
 }

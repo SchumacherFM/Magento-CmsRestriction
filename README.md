@@ -17,6 +17,7 @@ Installation Instructions
 3. `modman init`
 4. `modman clone git://github.com/SchumacherFM/Magento-CmsRestriction.git`
 
+Composer ready.
 
 #### Backend
 
@@ -32,7 +33,27 @@ Support / Contribution
 
 Report a bug or send me a pull request.
 
+Version
+-------
+
+- 1.0.0
 
 Licence
 -------
 [OSL - Open Software Licence 3.0](http://opensource.org/licenses/osl-3.0.php)
+
+Support / Contribution
+----------------------
+
+Report a bug using the issue tracker or send us a pull request.
+
+Instead of forking I can add you as a Collaborator IF you really intend to develop on this module. Just ask :-)
+
+I am using that model: [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+
+Author
+------
+
+[Cyrill Schumacher](https://github.com/SchumacherFM)
+
+[My pgp public key](http://www.schumacher.fm/cyrill.asc)

@@ -16,7 +16,6 @@ class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestricti
     protected function _construct()
     {
         parent::_construct();
-
     }
 
     /**
@@ -37,9 +36,11 @@ class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestricti
     {
         /* @var $model Mage_Cms_Model_Page */
         return Mage::registry('cms_page');
-
     }
 
+    /**
+     * @return Mage_Adminhtml_Block_Widget_Form
+     */
     protected function _prepareForm()
     {
         $form = new Varien_Data_Form();

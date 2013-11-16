@@ -27,6 +27,11 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         return ($isLoggedIn && $isRestricted && $this->isCustomerAllowed($page));
     }
 
+    /**
+     * @param Mage_Cms_Model_Page $page
+     *
+     * @return bool
+     */
     public function isRenderingAllowed(Mage_Cms_Model_Page $page)
     {
         if (!$page->getIsActive()) {
@@ -48,7 +53,6 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         $allowCustomerIds    = $page->getAllowCustomerIds();
         $allowCustomerGroups = (int)$page->getAllowCustomerGroups();
         return ($allowCustomerGroups > 0 || !empty($allowCustomerIds));
-
     }
 
     /**
@@ -68,6 +72,9 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         return ($isValidGroup || $isValidCustomerId);
     }
 
+    /**
+     * @return string
+     */
     public function getAccessDeniedUrl()
     {
         return Mage::getStoreConfig(self::XML_PATH_ACCESS_DENIED);
@@ -92,7 +99,7 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
             $websiteName = 'all websites';
         }
 
-        if (( (int)$storeModel->getId() === $storeId) && $storeId) {
+        if (((int)$storeModel->getId() === $storeId) && $storeId) {
             $name        = $storeModel->getName();
             $websiteName = $storeModel->getWebsite()->getName();
         }
@@ -100,6 +107,11 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         return $websiteName . ' - ' . $name;
     }
 
+    /**
+     * @param $pageId
+     *
+     * @return bool|string
+     */
     public function getPageEditLink($pageId)
     {
         if ($pageId) {
