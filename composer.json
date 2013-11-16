@@ -1,0 +1,16 @@
+{
+    "name": "schumacherfm/magento-cmsrestriction",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Magento CMS Page Restriction on Customer ID and Group ID basis",
+    "homepage": "https://github.com/SchumacherFM/Magento-CmsRestriction",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors": [
+        {
+            "name": "Cyrill Schumacher",
+            "email": "cyrill+github@schumacher.fm"
+        }
+    ]
+}
