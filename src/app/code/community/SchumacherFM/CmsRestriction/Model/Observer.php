@@ -82,7 +82,7 @@ class SchumacherFM_CmsRestriction_Model_Observer
 
             $this->_pageIdentifier = $this->_getSessionRedirectUrl();
 
-            $url = Mage::helper('schumacherfm_cmsrestriction')->isCustomerAllowed($this->_getPageModelInstance())
+            $url = TRUE === Mage::helper('schumacherfm_cmsrestriction')->isCustomerAllowed($this->_getPageModelInstance())
                 ? $this->_pageIdentifier
                 : Mage::helper('schumacherfm_cmsrestriction')->getAccessDeniedUrl();
 
@@ -99,7 +99,7 @@ class SchumacherFM_CmsRestriction_Model_Observer
     {
         $this->_initProperties($observer);
 
-        if ($this->_getPageModelInstance() && !Mage::app()->getStore()->isAdmin()) {
+        if ($this->_getPageModelInstance() && FALSE === Mage::app()->getStore()->isAdmin()) {
 
             $isLoggedIn       = Mage::helper('customer')->isLoggedIn();
             $isPageRestricted = Mage::helper('schumacherfm_cmsrestriction')->isPageRestricted($this->_getPageModelInstance());
@@ -110,7 +110,7 @@ class SchumacherFM_CmsRestriction_Model_Observer
 
                 $this->_handleRedirect($this->_getRouteAccountLogin());
                 $this->_setSessionRedirectUrl($this->_pageIdentifier);
-            } elseif ($isLoggedIn && $isPageRestricted && !$isCustomerAllowed) {
+            } elseif ($isLoggedIn && $isPageRestricted && FALSE === $isCustomerAllowed) {
 
                 /* a logged in user has no permission to view this page */
                 $this->_handleRedirect(Mage::helper('schumacherfm_cmsrestriction')->getAccessDeniedUrl());

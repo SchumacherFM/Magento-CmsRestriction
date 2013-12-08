@@ -1,6 +1,6 @@
 "CMS Restrictions","CMS Restrictions"
 "URL Page Access denied","URL Page Access denied"
-"Redirects to this URL if a customer has not the permission to view this page.","Redirects to this URL if a customer has not the permission to view this page."
+"If a customer is logged in and wants to access a restricted page he/she will be redirected to that page.","If a customer is logged in and wants to access a restricted page he/she will be redirected to that page."
 "Restrict to customer groups or individual customers","Restrict to customer groups or individual customers"
 "Allow Customer Groups","Allow Customer Groups"
 "Allow Customer IDs","Allow Customer IDs"
