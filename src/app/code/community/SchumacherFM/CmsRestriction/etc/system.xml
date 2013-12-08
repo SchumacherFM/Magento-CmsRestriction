@@ -12,7 +12,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <url_access_denied translate="label">
+                        <url_access_denied translate="label,comment">
                             <label>URL Page Access denied</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>100</sort_order>
