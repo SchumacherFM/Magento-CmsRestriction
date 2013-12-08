@@ -36,10 +36,17 @@ Report a bug or send me a pull request.
 Version
 -------
 
-- 1.0.0
+#### 1.0.1
+
+- Minor fixes
+
+#### 1.0.0
+
+- Initial Release
 
 Licence
 -------
+
 [OSL - Open Software Licence 3.0](http://opensource.org/licenses/osl-3.0.php)
 
 Support / Contribution
