@@ -54,9 +54,7 @@
             </controller_action_postdispatch_customer_account_loginPost>
 
         </events>
-
     </global>
-
 
     <adminhtml>
         <layout>
@@ -76,8 +74,17 @@
                     </schumacherfm_cmsrestriction_update>
                 </observers>
             </cms_page_prepare_save>
-
         </events>
+        <translate>
+            <modules>
+                <schumacherfm_cmsrestriction>
+                    <files>
+                        <default>SchumacherFM_CmsRestriction.csv</default>
+                    </files>
+                </schumacherfm_cmsrestriction>
+            </modules>
+        </translate>
+
     </adminhtml>
 
     <default>

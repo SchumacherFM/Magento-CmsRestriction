@@ -1,0 +1,8 @@
+"CMS Restrictions","CMS Einschränkungen"
+"CMS Restriction","CMS Einschränkung"
+"URL Page Access denied","URL zur Seite Zugriff verweigert"
+"If a customer is logged in and wants to access a restricted page he/she will be redirected to that page.","Die eingeloggten Benutzenden des Frontends werden zu dieser Seite weitergeleitet, wenn der Zugriff verweigert wurde."
+"Restrict to customer groups or individual customers","Einschränkungen auf Kundengruppe oder individual Kunden"
+"Allow Customer Groups","Erlaubte Kundengruppen"
+"Allow Customer IDs","Erlaubte Kunden IDs"
+"Comma separated list with numbers.","CSV Liste mit Zahlen."

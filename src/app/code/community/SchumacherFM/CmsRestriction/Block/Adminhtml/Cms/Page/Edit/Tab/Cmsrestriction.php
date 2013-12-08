@@ -50,28 +50,28 @@ class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestricti
         $fieldSet = $form->addFieldset('main_fieldset',
             array(
 
-                'legend' => 'Restrict to customer groups or individual customers'
+                'legend' => Mage::helper('schumacherfm_cmsrestriction')->__('Restrict to customer groups or individual customers')
             ));
 
         $fieldSet->addField('allow_customer_groups', 'multiselect',
             array(
 
                 'name'     => 'allow_customer_groups[]',
-                'label'    => 'Allow Customer Groups',
-                'title'    => 'Allow Customer Groups',
+                'label'    => Mage::helper('schumacherfm_cmsrestriction')->__('Allow Customer Groups'),
+                'title'    => Mage::helper('schumacherfm_cmsrestriction')->__('Allow Customer Groups'),
                 'required' => FALSE,
                 'value'    => Mage::helper('schumacherfm_cmsrestriction')->getIntByExpoSum($registry->getAllowCustomerGroups()),
                 'values'   => Mage::getModel('schumacherfm_cmsrestriction/option_groups')->toOptionArray()
             ));
 
         $fieldSet->addField('allow_customer_ids', 'textarea', array(
-            'label'              => 'Allow Customer IDs',
-            'title'              => 'Allow Customer IDs',
+            'label'              => Mage::helper('schumacherfm_cmsrestriction')->__('Allow Customer IDs'),
+            'title'              => Mage::helper('schumacherfm_cmsrestriction')->__('Allow Customer IDs'),
             'name'               => 'allow_customer_ids',
             'style'              => 'height:10em;',
             'required'           => FALSE,
             'value'              => $registry->getAllowCustomerIds(),
-            'after_element_html' => '<p class="nm"><small>Comma separated list with numbers.</small></p>'
+            'after_element_html' => '<p class="nm"><small>' . Mage::helper('schumacherfm_cmsrestriction')->__('Comma separated list with numbers.') . '</small></p>'
         ));
 
         return parent::_prepareForm();
@@ -84,7 +84,7 @@ class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestricti
      */
     public function getTabLabel()
     {
-        return $this->__("CMS Restriction");
+        return Mage::helper('schumacherfm_cmsrestriction')->__('CMS Restriction');
     }
 
     /**
@@ -94,7 +94,7 @@ class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestricti
      */
     public function getTabTitle()
     {
-        return $this->__("CMS Restriction");
+        return Mage::helper('schumacherfm_cmsrestriction')->__('CMS Restriction');
     }
 
     /**
