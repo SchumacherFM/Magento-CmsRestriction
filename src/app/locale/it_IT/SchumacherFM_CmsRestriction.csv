@@ -1,0 +1,8 @@
+"CMS Restrictions","Limitazioni CMS"
+"URL Page Access denied","URL pagina di accesso negato"
+"If a customer is logged in and wants to access a restricted page he/she will be redirected to that page.","Se un utente dopo l'accesso cerca di vedere una pagina riservata, verrà inviato a questa pagina"
+"Restrict to customer groups or individual customers","Limita ad alcuni specifici gruppi o utenti"
+"Allow Customer Groups","Consenti gruppi di utenti"
+"Allow Customer IDs","Consenti alcuni ID utente"
+"Comma separated list with numbers.","Lista di numeri separati da virgole"
+"CMS Restriction","Limitazione CMS"
