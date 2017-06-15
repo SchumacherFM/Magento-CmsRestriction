@@ -51,8 +51,16 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
     public function isPageRestricted(Mage_Cms_Model_Page $page)
     {
         $allowCustomerIds    = $page->getAllowCustomerIds();
-        $allowCustomerGroups = (int)$page->getAllowCustomerGroups();
-        return ($allowCustomerGroups > 0 || !empty($allowCustomerIds));
+        $allowCustomerGroups = $page->getAllowCustomerGroups();
+
+        if (strlen($allowCustomerGroups) > 0) {
+            $allowCustomerGroups = explode(',', $allowCustomerGroups);
+        }
+        else {
+            $allowCustomerGroups = null;
+        }
+
+        return (is_array($allowCustomerGroups) || !empty($allowCustomerIds));
     }
 
     /**
@@ -66,7 +74,10 @@ class SchumacherFM_CmsRestriction_Helper_Data extends Mage_Core_Helper_Abstract
         $customer        = Mage::helper('customer')->getCustomer();
         $pageCustomerIds = array_flip(explode(',', $page->getAllowCustomerIds()));
 
-        $isValidGroup      = ((pow(2, $customer->getGroupId()) & $page->getAllowCustomerGroups()) > 0);
+        $allowedCustomerGroups = $page->getAllowCustomerGroups();
+        $allowedCustomerGroups = explode(',', $allowedCustomerGroups);
+        $isValidGroup = (in_array($customer->getGroupId(), $allowedCustomerGroups)) ? TRUE : FALSE;
+
         $isValidCustomerId = isset($pageCustomerIds[$customer->getEntityId()]);
 
         return ($isValidGroup || $isValidCustomerId);
