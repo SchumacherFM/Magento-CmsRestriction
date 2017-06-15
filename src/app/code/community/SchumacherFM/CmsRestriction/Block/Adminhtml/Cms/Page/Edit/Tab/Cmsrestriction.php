@@ -46,6 +46,7 @@ class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestricti
         $form = new Varien_Data_Form();
         $this->setForm($form);
         $registry = $this->_getCurrentPageInstance();
+        $allowedCustomerGroups = (strlen($registry->getAllowCustomerGroups()) > 0) ? explode(',', $registry->getAllowCustomerGroups()) : array();
 
         $fieldSet = $form->addFieldset('main_fieldset',
             array(
@@ -60,7 +61,7 @@ class SchumacherFM_CmsRestriction_Block_Adminhtml_Cms_Page_Edit_Tab_CmsRestricti
                 'label'    => Mage::helper('schumacherfm_cmsrestriction')->__('Allow Customer Groups'),
                 'title'    => Mage::helper('schumacherfm_cmsrestriction')->__('Allow Customer Groups'),
                 'required' => FALSE,
-                'value'    => Mage::helper('schumacherfm_cmsrestriction')->getIntByExpoSum($registry->getAllowCustomerGroups()),
+                'value'    => $allowedCustomerGroups,
                 'values'   => Mage::getModel('schumacherfm_cmsrestriction/option_groups')->toOptionArray()
             ));
 

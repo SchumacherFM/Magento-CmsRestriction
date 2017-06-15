@@ -48,7 +48,9 @@ class SchumacherFM_CmsRestriction_Model_Observer
         $allowedCustomerGroups = (array)$page->getAllowCustomerGroups();
         $allowedCustomerIds    = preg_replace('~[^0-9,]+~', '', $page->getAllowCustomerIds());
 
-        $page->setAllowCustomerGroups(Mage::helper('schumacherfm_cmsrestriction')->getExpoSum($allowedCustomerGroups));
+        if (!is_array($allowedCustomerGroups)) { $allowedCustomerGroups = array($allowedCustomerGroups); }
+
+        $page->setAllowCustomerGroups(implode(',', $allowedCustomerGroups));
         $page->setAllowCustomerIds($allowedCustomerIds);
     }
 
